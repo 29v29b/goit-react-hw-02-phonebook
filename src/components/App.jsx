@@ -25,18 +25,15 @@ class App extends Component {
       number: number
     }
 
+    if (this.state.contacts.find(element => element.name === contact.name)) {
+      alert(`Sorry! ${contact.name} is already in contacts`);
+      return;
+    } 
+
     this.setState(prevState => ({
       contacts: [...prevState.contacts, contact],
     }));
 
-    const normalizedName = name.toLowerCase();
-    let isAdded = false;
-    this.state.contacts.forEach(element => {
-      if (element.name.toLowerCase() === normalizedName) {
-        alert(`${name} is already in contacts`);
-        isAdded = true;
-      } return isAdded
-    });
   }
 
   deleteContact = contactId => {
